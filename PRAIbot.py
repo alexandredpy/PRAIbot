@@ -31,17 +31,18 @@ async def on_ready():
 
 @bot.command()
 async def prai(ctx, param: str=None):
-    param = param.lower()
     # This is checking if the parameter is given or not
     if (param is None):
         await ctx.send("PRAI")
         return
-    if (param == 'help'):
-        await ctx.send(helpmsg)
-        return
-    if (param == 'version'):
-        # If the parameter is 'version', send information about the bot
-        await ctx.send(versionmsg)
-        return
+    else:
+        param = param.lower()
+        if (param == 'help'):
+            await ctx.send(helpmsg)
+            return
+        if (param == 'version'):
+            # If the parameter is 'version', send information about the bot
+            await ctx.send(versionmsg)
+            return
 
 bot.run(TOKEN)
