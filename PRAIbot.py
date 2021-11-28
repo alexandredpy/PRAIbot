@@ -40,6 +40,9 @@ async def prai(ctx, param: str=None):
         if (param == 'help'):
             await ctx.send(helpmsg)
             return
+        if (param == 'force'):
+            await ctx.send('PRAI @<131170813444358144>')
+            return
         if (param == 'version'):
             # If the parameter is 'version', send information about the bot
             await ctx.send(versionmsg)
