@@ -29,25 +29,8 @@ async def on_ready():
     print(f'Logged in as: {bot.user.name}')
     print(f'With ID: {bot.user.id}')
 
-async def prai(ctx, param: str=None):
-    # This is checking if the parameter is given or not
-    if (param is None):
-        await ctx.send("PRAI")
-        return
-    else:
-        param = param.lower()
-        match param:
-            # If the parameter is help, prints a useful guide for the bot
-            case 'help':
-                await ctx.send(helpmsg)
-                return
-            # If the parameter is 'version', send information about the bot
-            case 'version':
-                await ctx.send(versionmsg)
-                return
-             # In case where the parameter isn't recognized, print a message
-            case _:
-                await ctx.send("PRAI n'a pas compris")
-                return
+async def prai(ctx):
+    await ctx.send("PRAI")
+    return
 
 bot.run(TOKEN)
