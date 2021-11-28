@@ -29,8 +29,19 @@ async def on_ready():
     print(f'Logged in as: {bot.user.name}')
     print(f'With ID: {bot.user.id}')
 
-async def prai(ctx):
-    await ctx.send("PRAI")
-    return
+@bot.command()
+async def prai(ctx, param: str=None):
+    param = param.lower()
+    # This is checking if the parameter is given or not
+    if (param is None):
+        await ctx.send("PRAI")
+        return
+    if (param == 'help'):
+        await ctx.send(helpmsg)
+        return
+    if (param == 'version'):
+        # If the parameter is 'version', send information about the bot
+        await ctx.send(versionmsg)
+        return
 
 bot.run(TOKEN)
