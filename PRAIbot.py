@@ -14,13 +14,16 @@ INTENTS = discord.Intents.default()
 bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS, case_insensitive=True) #case_insensitive to fix caps issue
 
 # Is printed when !prai help is called
-helpmsg = "Aide pour la version française :\
+helpmsg = "Aide pour les gens perdus :\
 ```\
-!prai   # Calls PRAI\
+!prai           # Calls PRAI\
+!prai force     # Mentions PRAI in case of emergency\
+!prai version   # Prints the version of the bot\
+!prai help      # Prints this help message\
 ```"
 
 # Is printed when !prai version is called
-versionmsg = "Bot: PRAIbot - Version 1.0\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
+versionmsg = "Bot: PRAIbot - Version 1.0\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
 
 client = discord.Client()
 
@@ -33,7 +36,7 @@ async def on_ready():
 async def prai(ctx, param: str=None):
     # This is checking if the parameter is given or not
     if (param is None):
-        await ctx.send("PRAI")
+        await ctx.send('**PRAI**')
         return
     else:
         param = param.lower()
@@ -41,11 +44,16 @@ async def prai(ctx, param: str=None):
             await ctx.send(helpmsg)
             return
         if (param == 'force'):
+            # If the parameter is 'force', then mention PRAI
             await ctx.send('PRAI @<131170813444358144>')
             return
         if (param == 'version'):
             # If the parameter is 'version', send information about the bot
             await ctx.send(versionmsg)
             return
-
+        if (param != 'version' or param != 'force' or param != 'version'):
+            # A little big romano, but if parameter is not recognized
+            await ctx.send('**PRAI** perdu, merci de réessayer. *#PRAYforPRAI*')
+            return
+            
 bot.run(TOKEN)
