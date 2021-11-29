@@ -18,12 +18,13 @@ helpmsg = "Aide pour les gens perdus :\
 ```\
 !prai           # Calls PRAI\n\
 !prai force     # Mentions PRAI in case of emergency\n\
+!prai broadcast # In case of ULTIMATE emergency \n\
 !prai version   # Prints the version of the bot\n\
 !prai help      # Prints this help message\n\
 ```"
 
 # Is printed when !prai version is called
-versionmsg = "Bot: PRAIbot - Version 1.0\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
+versionmsg = "Bot: PRAIbot - Version 1.0.1\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
 
 client = discord.Client()
 
@@ -44,6 +45,10 @@ async def prai(ctx, param: str=None):
             # If the parameter is 'help', then send the help guide
             await ctx.send(helpmsg)
             return
+        if (param == 'broadcast'):
+            # If the parameter is 'help', then send the help guide
+            await ctx.send('**PRAI** <@914589056627798116>')
+            return
         if (param == 'force'):
             # If the parameter is 'force', then mention PRAI
             await ctx.send('**PRAI** <@131170813444358144>')
@@ -52,7 +57,7 @@ async def prai(ctx, param: str=None):
             # If the parameter is 'version', send information about the bot
             await ctx.send(versionmsg)
             return
-        if (param != 'version' or param != 'force' or param != 'version'):
+        if (param != 'version' or param != 'force' or param != 'version' or param != 'broadcast'):
             # A little big romano, but if parameter is not recognized
             await ctx.send('**PRAI** perdu, merci de réessayer. *#PRAYforPRAI*')
             return
