@@ -24,7 +24,7 @@ helpmsg = "Aide pour les gens perdus :\
 ```"
 
 # Is printed when !prai version is called
-versionmsg = "Bot: PRAIbot - Version 1.0.1\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
+versionmsg = "Bot: PRAIbot - Version 1.0.1\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3\n[Github](https://github.com/alexandredpy/PRAIbot)"
 
 client = discord.Client()
 
@@ -47,7 +47,7 @@ async def prai(ctx, param: str=None):
             return
         if (param == 'broadcast'):
             # If the parameter is 'help', then send the help guide
-            await ctx.send('**PRAI** <@914589056627798116>')
+            await ctx.send('**PRAI** <@&914589056627798116>')
             return
         if (param == 'force'):
             # If the parameter is 'force', then mention PRAI
