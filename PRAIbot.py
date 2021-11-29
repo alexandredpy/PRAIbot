@@ -47,7 +47,7 @@ async def prai(ctx, param: str=None):
             return
         if (param == 'broadcast'):
             # If the parameter is 'help', then send the help guide
-            await ctx.send('**PRAI** <@&914589056627798116>')
+            await ctx.send('**PRAI** <@&731253861670453320>')
             return
         if (param == 'force'):
             # If the parameter is 'force', then mention PRAI
