@@ -45,20 +45,20 @@ async def prai(ctx, param: str=None):
             # If the parameter is 'help', then send the help guide
             await ctx.send(helpmsg)
             return
-        if (param == 'broadcast'):
+        elif (param == 'broadcast'):
             # If the parameter is 'help', then send the help guide
             await ctx.send('**PRAI** <@&731253861670453320>')
             return
-        if (param == 'force'):
+        elif (param == 'force'):
             # If the parameter is 'force', then mention PRAI
             await ctx.send('**PRAI** <@131170813444358144>')
             return
-        if (param == 'version'):
+        elif (param == 'version'):
             # If the parameter is 'version', send information about the bot
             await ctx.send(versionmsg)
             return
-        if (param != 'version' or param != 'force' or param != 'help' or param != 'broadcast'):
-            # A little big romano, but if parameter is not recognized
+        else:
+            # If parameter is not recognized
             await ctx.send('**PRAI** perdu, merci de réessayer. *#PRAYforPRAI*')
             return
             
