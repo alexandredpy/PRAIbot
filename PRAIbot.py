@@ -57,7 +57,7 @@ async def prai(ctx, param: str=None):
             # If the parameter is 'version', send information about the bot
             await ctx.send(versionmsg)
             return
-        if (param != 'version' or param != 'force' or param != 'version' or param != 'broadcast'):
+        if (param != 'version' or param != 'force' or param != 'help' or param != 'broadcast'):
             # A little big romano, but if parameter is not recognized
             await ctx.send('**PRAI** perdu, merci de réessayer. *#PRAYforPRAI*')
             return
