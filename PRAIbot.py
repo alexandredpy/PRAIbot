@@ -16,11 +16,11 @@ bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS, case_insensitive=True
 # Is printed when !prai help is called
 helpmsg = "Aide pour les gens perdus :\
 ```\
-!prai           # Calls PRAI\n\
-!prai force     # Mentions PRAI in case of emergency\n\
-!prai broadcast # In case of ULTIMATE emergency \n\
-!prai version   # Prints the version of the bot\n\
-!prai help      # Prints this help message\n\
+!prai               # Calls PRAI\n\
+!prai force         # Mentions PRAI in case of emergency\n\
+!prai broadcast     # In case of ULTIMATE emergency \n\
+!prai version       # Prints the version of the bot\n\
+!prai help          # Prints this help message\n\
 ```"
 
 # Is printed when !prai version is called
@@ -47,7 +47,7 @@ async def prai(ctx, param: str=None):
             return
         elif (param == 'broadcast'):
             # If the parameter is 'help', then send the help guide
-            await ctx.send('**PRAI** <@&731253861670453320>')
+            await ctx.send('**PRAI** <@&915525095835967519>')
             return
         elif (param == 'force'):
             # If the parameter is 'force', then mention PRAI
