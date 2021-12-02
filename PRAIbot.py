@@ -15,8 +15,7 @@ INTENTS = discord.Intents.default()
 bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS, case_insensitive=True) #case_insensitive to fix caps issue
 
 # Is printed when !prai help is called
-helpmsg = "Aide pour les gens perdus :\
-\
+helpmsg = "Aide pour les gens perdus :\n\
 ```\
 !prai               # Calls PRAI\n\
 !prai force         # Mentions PRAI in case of emergency\n\
