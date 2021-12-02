@@ -25,7 +25,7 @@ helpmsg = "Aide pour les gens perdus :\
 ```"
 
 # Is printed when !prai version is called
-versionmsg = "Bot: PRAIbot - Version 1.0.1\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
+versionmsg = "Bot: PRAIbot - Version 1.1\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
 
 client = discord.Client()
 
@@ -57,6 +57,12 @@ async def prai(ctx, param: str=None):
         elif (param == 'version'):
             # If the parameter is 'version', send information about the bot
             await ctx.send(versionmsg)
+            return
+        elif (param == 'voice'):
+            # If the parameter is 'voice', send a voice file
+            with open('praitesttt.flac', 'rb') as f:
+                audio = discord.File(f)
+            await ctx.send(file = audio)
             return
         else:
             # If parameter is not recognized
