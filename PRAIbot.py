@@ -1,4 +1,5 @@
 # BY ADU - 28/11/21
+# voice_version by AKOE and ADU - 2/12/21
 # Licence : CC-BY-NC-SA
 
 import discord
@@ -15,16 +16,18 @@ bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS, case_insensitive=True
 
 # Is printed when !prai help is called
 helpmsg = "Aide pour les gens perdus :\
+\
 ```\
 !prai               # Calls PRAI\n\
 !prai force         # Mentions PRAI in case of emergency\n\
 !prai broadcast     # In case of ULTIMATE emergency \n\
+!prai voice         # Send a voice file\n\
 !prai version       # Prints the version of the bot\n\
 !prai help          # Prints this help message\n\
 ```"
 
 # Is printed when !prai version is called
-versionmsg = "Bot: PRAIbot - Version 1.0.1\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
+versionmsg = "Bot: PRAIbot - Version 1.1\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
 
 client = discord.Client()
 
@@ -56,6 +59,12 @@ async def prai(ctx, param: str=None):
         elif (param == 'version'):
             # If the parameter is 'version', send information about the bot
             await ctx.send(versionmsg)
+            return
+        elif (param == 'voice'):
+            # If the parameter is 'voice', send a voice file
+            with open('prai.flac', 'rb') as f:
+                audio = discord.File(f)
+            await ctx.send(file = audio)
             return
         else:
             # If parameter is not recognized
