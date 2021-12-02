@@ -16,10 +16,12 @@ bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS, case_insensitive=True
 
 # Is printed when !prai help is called
 helpmsg = "Aide pour les gens perdus :\
+\
 ```\
 !prai               # Calls PRAI\n\
 !prai force         # Mentions PRAI in case of emergency\n\
 !prai broadcast     # In case of ULTIMATE emergency \n\
+!prai voice         # Send a voice file\
 !prai version       # Prints the version of the bot\n\
 !prai help          # Prints this help message\n\
 ```"
