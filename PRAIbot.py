@@ -1,5 +1,5 @@
 # BY ADU - 28/11/21
-# voice_version by AKOE - 2/12/21
+# voice_version by AKOE and ADU - 2/12/21
 # Licence : CC-BY-NC-SA
 
 import discord
@@ -21,7 +21,7 @@ helpmsg = "Aide pour les gens perdus :\
 !prai               # Calls PRAI\n\
 !prai force         # Mentions PRAI in case of emergency\n\
 !prai broadcast     # In case of ULTIMATE emergency \n\
-!prai voice         # Send a voice file\
+!prai voice         # Send a voice file\n\
 !prai version       # Prints the version of the bot\n\
 !prai help          # Prints this help message\n\
 ```"
@@ -62,7 +62,7 @@ async def prai(ctx, param: str=None):
             return
         elif (param == 'voice'):
             # If the parameter is 'voice', send a voice file
-            with open('praitesttt.flac', 'rb') as f:
+            with open('prai.flac', 'rb') as f:
                 audio = discord.File(f)
             await ctx.send(file = audio)
             return
