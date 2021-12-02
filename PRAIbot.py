@@ -1,4 +1,5 @@
 # BY ADU - 28/11/21
+# voice_version by AKOE - 2/12/21
 # Licence : CC-BY-NC-SA
 
 import discord
