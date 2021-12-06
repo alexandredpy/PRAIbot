@@ -76,7 +76,7 @@ async def prai(ctx, param: str=None):
             return
         elif (param == 'stats'):
             # If the parameter is 'stats', then return the counter
-            await ctx.send(f"Le bot a déjà crié **PRAI** {str(cntr)} fois")
+            await ctx.send(f"Le bot a déjà crié **PRAI** {str(cntr)} fois dans sa vie")
             return
         elif (param == 'voice'):
             # If the parameter is 'voice', send a voice file
