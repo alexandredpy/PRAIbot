@@ -15,7 +15,9 @@ In the appropriate Discord channel :
     !prai force         # Mentions PRAI in case of emergency
     !prai version       # Prints the version of the bot
     !prai voice         # Sends a voice message of PRAI
-    !prai broadcast     # Mentions all the SR in case of ultimate emergency
+    !prai broadcast     # Mentions the PRAI group in case of ultimate emergency
+    !prai stats         # Returns the bot usage counter
+    !prai xplosion      # Reads PRAI with TTS
     !prai help          # Prints this help message
    ```
 
