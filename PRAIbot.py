@@ -1,4 +1,4 @@
-# BY ADU and AKOE - 06/12/21
+# BY ADU and AKOE - 07/12/21
 # Licence : CC-BY-NC-SA
 
 import discord
