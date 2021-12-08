@@ -81,6 +81,7 @@ async def prai(ctx, param: str=None):
             return
         elif (param == 'xplosion'):
             # If the parameter is 'xplosion', the read the msg with TTSs
+            appendToFile(int(cntr)) # Increment the usage counter
             await ctx.send("pérai", tts=True)
             return
         elif (param == 'voice'):
