@@ -22,13 +22,14 @@ helpmsg = "Aide pour les gens perdus :\n\
 !prai broadcast     # In case of ULTIMATE emergency \n\
 !prai voice         # Send a voice file\n\
 !prai xplosion      # Reads PRAI with TTS\n\
+!prai status        # Returns the current activity of PRAI\n\
 !prai version       # Prints the version of the bot\n\
 !prai stats         # Returns the bot usage counter\n\
 !prai help          # Prints this help message\n\
 ```"
 
 # Is printed when !prai version is called
-versionmsg = "Bot: PRAIbot - Version 1.4 Beta\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
+versionmsg = "Bot: PRAIbot - Version 1.4\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
 
 # Function to increment the usage counter by one
 def appendToFile(cntr):
