@@ -11,14 +11,15 @@ The PRAI bot works in French.
 In the appropriate Discord channel :
 
    ```text
-    !prai               # Calls PRAI
-    !prai force         # Mentions PRAI in case of emergency
-    !prai version       # Prints the version of the bot
-    !prai voice         # Sends a voice message of PRAI
-    !prai broadcast     # Mentions the PRAI group in case of ultimate emergency
-    !prai stats         # Returns the bot usage counter
-    !prai xplosion      # Reads PRAI with TTS
-    !prai help          # Prints this help message
+      !prai               # Calls PRAI\n\
+      !prai force         # Mentions PRAI in case of emergency\n\
+      !prai broadcast     # In case of ULTIMATE emergency \n\
+      !prai voice         # Send a voice file\n\
+      !prai xplosion      # Reads PRAI with TTS\n\
+      !prai status        # Returns the current activity of PRAI\n\
+      !prai version       # Prints the version of the bot\n\
+      !prai stats         # Returns the bot usage counter\n\
+      !prai help          # Prints this help message\n\
    ```
 
 ### License : 
