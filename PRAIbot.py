@@ -4,6 +4,7 @@
 import discord
 from discord.ext.commands.bot import Bot
 from discord.ext import commands
+import datetime
 
 with open('BotToken.txt', 'r') as f:
     TOKEN = f.readline()
@@ -36,6 +37,10 @@ def appendToFile(cntr):
         cntr += 1
         f.write(str(cntr))
         f.close()
+
+# Function to check btw 2 times
+def time_in_range(start, end, current):
+    return start <= current <= end
 
 client = discord.Client()
 
@@ -90,6 +95,35 @@ async def prai(ctx, param: str=None):
             with open('prai.flac', 'rb') as f:
                 audio = discord.File(f)
             await ctx.send(file = audio)
+            return
+        elif (param == 'status'):
+            # If the parameter is 'status', then return the status
+            appendToFile(int(cntr)) # Increment the usage counter
+            now = datetime.datetime.now().time() # Get current time
+            if (time_in_range(datetime.time(21, 30, 0), datetime.time(7, 0, 0), now)):
+                await ctx.send('**PRAI** fait dodo :zzz:')
+                return
+            elif (time_in_range(datetime.time(7, 0, 0), datetime.time(10, 0, 0), now)):
+                await ctx.send('**PRAI** fait ses petites amplettes :basket:')
+                return
+            elif (time_in_range(datetime.time(10, 0, 0), datetime.time(11, 45, 0), now)):
+                await ctx.send('**PRAI** regarde la TV :tv: #Motus')
+                return
+            elif (time_in_range(datetime.time(11, 45, 0), datetime.time(14, 15, 0), now)):
+                await ctx.send('**PRAI** mange :hamburger:')
+                return
+            elif (time_in_range(datetime.time(14, 15, 0), datetime.time(16, 30, 0), now)):
+                await ctx.send('**PRAI** fait la sieste :zzz:')
+                return
+            elif (time_in_range(datetime.time(16, 30, 0), datetime.time(17, 00, 0), now)):
+                await ctx.send('**PRAI** fait un test PCR :microbe:')
+                return
+            elif (time_in_range(datetime.time(17, 00, 0), datetime.time(18, 30, 0), now)):
+                await ctx.send('**PRAI** fait des mots croisés :pencil:')
+                return
+            elif (time_in_range(datetime.time(18, 30, 0), datetime.time(21, 30, 0), now)):
+                await ctx.send('**PRAI** prends le souper :ramen:')
+                return
             return
         else:
             # If parameter is not recognized
