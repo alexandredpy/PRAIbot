@@ -101,7 +101,10 @@ async def prai(ctx, param: str=None):
             # If the parameter is 'status', then return the status
             appendToFile(int(cntr)) # Increment the usage counter
             now = datetime.datetime.now().time() # Get current time
-            if (time_in_range(datetime.time(21, 30, 0), datetime.time(7, 0, 0), now)):
+            if (time_in_range(datetime.time(21, 30, 0), datetime.time(23, 59, 59), now)):
+                await ctx.send('**PRAI** fait dodo :zzz:')
+                return
+            elif (time_in_range(datetime.time(0, 0, 0), datetime.time(7, 0, 0), now)):
                 await ctx.send('**PRAI** fait dodo :zzz:')
                 return
             elif (time_in_range(datetime.time(7, 0, 0), datetime.time(10, 0, 0), now)):
