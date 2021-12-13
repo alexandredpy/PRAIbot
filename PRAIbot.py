@@ -108,7 +108,7 @@ async def prai(ctx, param: str=None):
                 await ctx.send('**PRAI** fait dodo :zzz:')
                 return
             elif (time_in_range(datetime.time(7, 0, 0), datetime.time(10, 0, 0), now)):
-                await ctx.send('**PRAI** fait ses petites amplettes :basket:')
+                await ctx.send('**PRAI** fait ses petites emplettes :basket:')
                 return
             elif (time_in_range(datetime.time(10, 0, 0), datetime.time(11, 45, 0), now)):
                 await ctx.send('**PRAI** regarde la TV :tv: #Motus')
