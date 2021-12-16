@@ -71,6 +71,9 @@ async def prai(ctx, param: str=None):
     with open('count.txt', 'r+') as f:
         cntr = f.readline()
         f.close()
+    # For admin purposes only
+    if (ctx.message.author.id == 299572932307582976 and jacky == False):
+        return
     # This is checking if the parameter is given or not
     if (param is None):
         appendToFile(int(cntr)) # Increment the usage counter
@@ -123,9 +126,9 @@ async def prai(ctx, param: str=None):
             # For admin usage only 
             if (ctx.message.author.id == 151379424967786496 or ctx.message.author.id == 316317238103769089): # if Alex or Alois
                 jacky = not jacky # Invert the jacky bool
-                await ctx.send(f"Inverted : {jacky}")
+                await ctx.send(":white_check_mark:")
                 return
-            await ctx.send("you are not admin")
+            await ctx.send("Vous n'êtes pas autorisé à utiliser cette commande.")
             return
         elif (param == 'status'):
             # If the parameter is 'status', then return the status
