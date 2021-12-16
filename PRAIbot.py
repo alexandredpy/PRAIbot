@@ -64,7 +64,7 @@ async def on_ready():
     print(f'Logged in as: {bot.user.name}')
     print(f'With ID: {bot.user.id}')
 
-@bot.command()
+@bot.command(pass_context = True)
 async def prai(ctx, param: str=None):
     # Read the daily counter
     with open('count.txt', 'r+') as f:
@@ -120,7 +120,7 @@ async def prai(ctx, param: str=None):
             return
         elif (param == 'jacky'):
             # For admin usage only 
-            if (ctx.author.id == '151379424967786496' or ctx.author.id == '316317238103769089'): # if Alex or Alois
+            if (ctx.message.author.id == '151379424967786496' or ctx.message.author.id == '316317238103769089'): # if Alex or Alois
                 not jacky # To invert boolean state
                 await ctx.send(f"Inverted : {jacky}")
                 return
