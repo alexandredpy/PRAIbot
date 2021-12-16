@@ -56,6 +56,9 @@ def time_in_range(start, end, current):
 
 client = discord.Client()
 
+# Boolean to control Jacky usage
+jacky = True
+
 @bot.event
 async def on_ready():
     print(f'Logged in as: {bot.user.name}')
@@ -114,6 +117,13 @@ async def prai(ctx, param: str=None):
             with open('prai.flac', 'rb') as f:
                 audio = discord.File(f)
             await ctx.send(file = audio)
+            return
+        elif (param == 'jacky'):
+            # For admin usage only 
+            if (ctx.author.id == '151379424967786496' or ctx.author.id == '316317238103769089'): # if Alex or Alois
+                not jacky # To invert boolean state
+                await ctx.send(f"Inverted : {jacky}")
+                return
             return
         elif (param == 'status'):
             # If the parameter is 'status', then return the status
