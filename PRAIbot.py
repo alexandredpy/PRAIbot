@@ -1,4 +1,4 @@
-# BY ADU and AKOE - 16/12/21
+# By ADU and AKOE - 16/12/21
 # Licence : CC-BY-NC-SA
 
 #### IMPORTS ####
@@ -56,17 +56,24 @@ def time_in_range(start, end, current):
 
 client = discord.Client()
 
+# Boolean to control Jacky usage
+jacky = True
+
 @bot.event
 async def on_ready():
     print(f'Logged in as: {bot.user.name}')
     print(f'With ID: {bot.user.id}')
 
-@bot.command()
+@bot.command(pass_context = True)
 async def prai(ctx, param: str=None):
+    global jacky
     # Read the daily counter
     with open('count.txt', 'r+') as f:
         cntr = f.readline()
         f.close()
+    # For admin purposes only
+    if (ctx.message.author.id == 299572932307582976 and jacky == False):
+        return
     # This is checking if the parameter is given or not
     if (param is None):
         appendToFile(int(cntr)) # Increment the usage counter
@@ -114,6 +121,14 @@ async def prai(ctx, param: str=None):
             with open('prai.flac', 'rb') as f:
                 audio = discord.File(f)
             await ctx.send(file = audio)
+            return
+        elif (param == 'jacky'):
+            # For admin usage only 
+            if (ctx.message.author.id == 151379424967786496 or ctx.message.author.id == 316317238103769089): # if Alex or Alois
+                jacky = not jacky # Invert the jacky bool
+                await ctx.send(":white_check_mark:")
+                return
+            await ctx.send("Vous n'êtes pas autorisé à utiliser cette commande.")
             return
         elif (param == 'status'):
             # If the parameter is 'status', then return the status
