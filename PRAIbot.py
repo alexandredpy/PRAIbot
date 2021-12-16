@@ -1,4 +1,4 @@
-# BY ADU and AKOE - 16/12/21
+# By ADU and AKOE - 16/12/21
 # Licence : CC-BY-NC-SA
 
 #### IMPORTS ####
