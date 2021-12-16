@@ -4,6 +4,7 @@
 ### Developed with : 
 * [Python](https://www.python.org/)
 * [Discord.py](https://discordpy.readthedocs.io/en/stable/)
+* [Blagues-API](https://www.blagues-api.fr/)
 
 ### Usage :
 The PRAI bot works in French.
