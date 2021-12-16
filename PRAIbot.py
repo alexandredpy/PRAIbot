@@ -5,14 +5,22 @@ import discord
 from discord.ext.commands.bot import Bot
 from discord.ext import commands
 import datetime
+from blagues_api import BlaguesAPI
 
+# Get the bot TOKEN
 with open('BotToken.txt', 'r') as f:
     TOKEN = f.readline()
+    f.close()
+
+# Get the blague API TOKEN
+with open('BlagueToken.txt', 'r') as f:
+    TOKENBLAGUE = f.readline()
     f.close()
 
 PREFIX = '!'
 INTENTS = discord.Intents.default()
 bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS, case_insensitive=True) #case_insensitive to fix caps issue
+blagues = BlaguesAPI(TOKENBLAGUE) # Init
 
 # Is printed when !prai help is called
 helpmsg = "Aide pour les gens perdus :\n\
@@ -29,7 +37,7 @@ helpmsg = "Aide pour les gens perdus :\n\
 ```"
 
 # Is printed when !prai version is called
-versionmsg = "Bot: PRAIbot - Version 1.4\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
+versionmsg = "Bot: PRAIbot - Version 1.5 Beta\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
 
 # Function to increment the usage counter by one
 def appendToFile(cntr):
@@ -89,6 +97,12 @@ async def prai(ctx, param: str=None):
             # If the parameter is 'xplosion', the read the msg with TTSs
             appendToFile(int(cntr)) # Increment the usage counter
             await ctx.send("pérai", tts=True)
+            return
+        elif (param == 'joke'):
+            # If the parameter is 'joke', return a random joke
+            appendToFile(int(cntr)) # Increment the usage counter
+            blague = await blagues.random()
+            await ctx.send(blague)
             return
         elif (param == 'voice'):
             # If the parameter is 'voice', send a voice file
