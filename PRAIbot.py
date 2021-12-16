@@ -5,6 +5,7 @@ import discord
 from discord.ext.commands.bot import Bot
 from discord.ext import commands
 import datetime
+import time
 from blagues_api import BlaguesAPI
 
 # Get the bot TOKEN
@@ -102,7 +103,9 @@ async def prai(ctx, param: str=None):
             # If the parameter is 'joke', return a random joke
             appendToFile(int(cntr)) # Increment the usage counter
             blague = await blagues.random()
-            await ctx.send(blague)
+            await ctx.send(blague.joke) # Send the joke
+            time.sleep(2) # 2 seconds pause
+            await ctx.send(blague.answer) # Send the answer
             return
         elif (param == 'voice'):
             # If the parameter is 'voice', send a voice file
