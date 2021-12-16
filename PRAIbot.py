@@ -66,6 +66,7 @@ async def on_ready():
 
 @bot.command(pass_context = True)
 async def prai(ctx, param: str=None):
+    global jacky
     # Read the daily counter
     with open('count.txt', 'r+') as f:
         cntr = f.readline()
@@ -121,7 +122,7 @@ async def prai(ctx, param: str=None):
         elif (param == 'jacky'):
             # For admin usage only 
             if (ctx.message.author.id == 151379424967786496 or ctx.message.author.id == 316317238103769089): # if Alex or Alois
-                jacky = not jacky # To invert boolean state
+                jacky = not jacky # Invert the jacky bool
                 await ctx.send(f"Inverted : {jacky}")
                 return
             await ctx.send("you are not admin")
