@@ -121,7 +121,7 @@ async def prai(ctx, param: str=None):
         elif (param == 'jacky'):
             # For admin usage only 
             if (ctx.message.author.id == 151379424967786496 or ctx.message.author.id == 316317238103769089): # if Alex or Alois
-                not jacky # To invert boolean state
+                jacky = not jacky # To invert boolean state
                 await ctx.send(f"Inverted : {jacky}")
                 return
             await ctx.send("you are not admin")
