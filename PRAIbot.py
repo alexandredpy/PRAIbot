@@ -124,6 +124,7 @@ async def prai(ctx, param: str=None):
                 not jacky # To invert boolean state
                 await ctx.send(f"Inverted : {jacky}")
                 return
+            await ctx.send("you are not admin")
             return
         elif (param == 'status'):
             # If the parameter is 'status', then return the status
