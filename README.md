@@ -17,6 +17,7 @@ In the appropriate Discord channel :
       !prai broadcast     # In case of ULTIMATE emergency
       !prai voice         # Send a voice file
       !prai xplosion      # Reads PRAI with TTS
+      !prai joke          # Tells a random funny joke
       !prai status        # Returns the current activity of PRAI
       !prai version       # Prints the version of the bot
       !prai stats         # Returns the bot usage counter

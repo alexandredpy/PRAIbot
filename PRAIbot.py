@@ -1,18 +1,29 @@
-# BY ADU and AKOE - 07/12/21
+# BY ADU and AKOE - 16/12/21
 # Licence : CC-BY-NC-SA
 
+#### IMPORTS ####
 import discord
 from discord.ext.commands.bot import Bot
 from discord.ext import commands
 import datetime
+import time
+from blagues_api import BlaguesAPI
+#################
 
+# Get the bot TOKEN
 with open('BotToken.txt', 'r') as f:
     TOKEN = f.readline()
+    f.close()
+
+# Get the blague API TOKEN
+with open('BlagueToken.txt', 'r') as f:
+    TOKENBLAGUE = f.readline()
     f.close()
 
 PREFIX = '!'
 INTENTS = discord.Intents.default()
 bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS, case_insensitive=True) #case_insensitive to fix caps issue
+blagues = BlaguesAPI(TOKENBLAGUE) # Blague API init
 
 # Is printed when !prai help is called
 helpmsg = "Aide pour les gens perdus :\n\
@@ -22,6 +33,7 @@ helpmsg = "Aide pour les gens perdus :\n\
 !prai broadcast     # In case of ULTIMATE emergency \n\
 !prai voice         # Send a voice file\n\
 !prai xplosion      # Reads PRAI with TTS\n\
+!prai joke          # Tells a random funny joke\n\
 !prai status        # Returns the current activity of PRAI\n\
 !prai version       # Prints the version of the bot\n\
 !prai stats         # Returns the bot usage counter\n\
@@ -29,7 +41,7 @@ helpmsg = "Aide pour les gens perdus :\n\
 ```"
 
 # Is printed when !prai version is called
-versionmsg = "Bot: PRAIbot - Version 1.4\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
+versionmsg = "Bot: PRAIbot - Version 1.5\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
 
 # Function to increment the usage counter by one
 def appendToFile(cntr):
@@ -89,6 +101,14 @@ async def prai(ctx, param: str=None):
             # If the parameter is 'xplosion', the read the msg with TTSs
             appendToFile(int(cntr)) # Increment the usage counter
             await ctx.send("pérai", tts=True)
+            return
+        elif (param == 'joke'):
+            # If the parameter is 'joke', return a random joke
+            appendToFile(int(cntr)) # Increment the usage counter
+            blague = await blagues.random()
+            await ctx.send(blague.joke) # Send the joke
+            time.sleep(5) # 5 seconds pause
+            await ctx.send(blague.answer) # Send the answer
             return
         elif (param == 'voice'):
             # If the parameter is 'voice', send a voice file
