@@ -9,7 +9,8 @@ import datetime
 from blagues_api import BlaguesAPI
 #################
 
-# Get the bot TOKEN
+#### TOKENS ####
+# Get the Discord bot TOKEN
 with open('BotToken.txt', 'r') as f:
     TOKEN = f.readline()
     f.close()
@@ -18,11 +19,16 @@ with open('BotToken.txt', 'r') as f:
 with open('BlagueToken.txt', 'r') as f:
     TOKENBLAGUE = f.readline()
     f.close()
+#################
 
+#### Init ####
 PREFIX = '!'
 INTENTS = discord.Intents.default()
-bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS, case_insensitive=True) #case_insensitive to fix caps issue
+bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS, case_insensitive=True) # case_insensitive to fix caps issue
 blagues = BlaguesAPI(TOKENBLAGUE) # Blague API init
+client = discord.Client()
+jacky = True # Boolean to control Jacky usage
+#################
 
 # Is printed when !prai help is called
 helpmsg = "Aide pour les gens perdus :\n\
@@ -42,6 +48,7 @@ helpmsg = "Aide pour les gens perdus :\n\
 # Is printed when !prai version is called
 versionmsg = "Bot: PRAIbot - Version 1.5\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
 
+#### Functions ####
 # Function to increment the usage counter by one
 def appendToFile(cntr):
     open('count.txt', 'w').close()
@@ -50,14 +57,10 @@ def appendToFile(cntr):
         f.write(str(cntr))
         f.close()
 
-# Function to check btw 2 times
+# Function to check btw 2 times (for prai status)
 def time_in_range(start, end, current):
     return start <= current <= end
-
-client = discord.Client()
-
-# Boolean to control Jacky usage
-jacky = True
+#################
 
 @bot.event
 async def on_ready():
@@ -66,14 +69,17 @@ async def on_ready():
 
 @bot.command(pass_context = True)
 async def prai(ctx, param: str=None):
-    global jacky
+    global jacky # Make the jacky variable global
+
     # Read the daily counter
     with open('count.txt', 'r+') as f:
         cntr = f.readline()
         f.close()
+
     # For admin purposes only
     if (ctx.message.author.id == 299572932307582976 and jacky == False):
         return
+    
     # This is checking if the parameter is given or not
     if (param is None):
         appendToFile(int(cntr)) # Increment the usage counter
@@ -128,7 +134,7 @@ async def prai(ctx, param: str=None):
                 jacky = not jacky # Invert the jacky bool
                 await ctx.send(":white_check_mark:")
                 return
-            await ctx.send("Vous n'êtes pas autorisé à utiliser cette commande.")
+            await ctx.send("Vous n'êtes pas autorisé à utiliser cette commande.") # If not admin
             return
         elif (param == 'status'):
             # If the parameter is 'status', then return the status
