@@ -1,4 +1,4 @@
-# By ADU and AKOE - 16/12/21
+# By ADU and AKOE - 03/02/22
 # Licence : CC-BY-NC-SA
 
 #### IMPORTS ####
@@ -46,7 +46,7 @@ helpmsg = "Aide pour les gens perdus :\n\
 ```"
 
 # Is printed when !prai version is called
-versionmsg = "Bot: PRAIbot - Version 1.5\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
+versionmsg = "Bot: PRAIbot - Version 1.6\nAuthor: ADU\nPython version: 3.9.2\nOS: Debian 11 Bullseye (amd64)\nHypervisor: ESXi 6.7U3"
 
 #### Functions ####
 # Function to increment the usage counter by one
@@ -170,7 +170,9 @@ async def prai(ctx, param: str=None):
             return
         else:
             # If parameter is not recognized
-            await ctx.send('**PRAI** perdu, merci de réessayer. *#PRAYforPRAI*')
-            return
+            with open('prai-perdu.jpg', 'rb') as f:
+                picture = discord.File(f)
+                await ctx.send(f'**PRAI** perdu, merci de réessayer. *#PRAYforPRAI*', file = picture)
+                return
             
 bot.run(TOKEN)
